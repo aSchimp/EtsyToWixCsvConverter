@@ -38,7 +38,7 @@ namespace EtsyToWixCsvConverter
                 {
                     Name = etsyProduct.Title,
                     FieldType = "Product",
-                    Description = etsyProduct.Description,
+                    Description = "<p>" + etsyProduct.Description + "</p><p>&nbsp;</p><p>" + "Tags: " + etsyProduct.Tags?.Replace("_", " ").Replace(",", ", ") + "</p>",
                     Inventory = etsyProduct.Quantity.ToString(),
                     Price = etsyProduct.Price,
                     ProductImageUrls = string.Join(";", etsyProduct.GetAllImages()),
