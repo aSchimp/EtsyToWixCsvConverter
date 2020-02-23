@@ -38,13 +38,25 @@ namespace EtsyToWixCsvConverter
                 {
                     Name = etsyProduct.Title,
                     FieldType = "Product",
-                    Description = "<p>" + etsyProduct.Description + "</p><p>&nbsp;</p><p>" + "Tags: " + etsyProduct.Tags?.Replace("_", " ").Replace(",", ", ") + "</p>",
+                    Description = etsyProduct.Description,
                     Inventory = etsyProduct.Quantity.ToString(),
                     Price = etsyProduct.Price,
                     ProductImageUrls = string.Join(";", etsyProduct.GetAllImages()),
                     HandleId = "product_" + Guid.NewGuid(),
                     Collection = "Import"
                 };
+
+                if (!string.IsNullOrEmpty(etsyProduct.Tags))
+                {
+                    wixProduct.AdditionalInfoTitle1 = "Tags";
+                    wixProduct.AdditionalInfoDescription1 = etsyProduct.Tags.Replace("_", " ").Replace(",", ", ");
+                }
+
+                if (!string.IsNullOrEmpty(etsyProduct.Materials))
+                {
+                    wixProduct.AdditionalInfoTitle2 = "Materials";
+                    wixProduct.AdditionalInfoDescription2 = etsyProduct.Materials.Replace("_", " ").Replace(",", ", ");
+                }
 
                 wixProducts.Add(wixProduct);
             }

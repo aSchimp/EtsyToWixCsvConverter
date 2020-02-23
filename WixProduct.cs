@@ -30,5 +30,17 @@ namespace EtsyToWixCsvConverter
 
         [Name("inventory")]
         public string Inventory { get; set; }
+
+        [Name("additionalInfoTitle1")]
+        public string AdditionalInfoTitle1 { get; set; }
+
+        [Name("additionalInfoDescription1")]
+        public string AdditionalInfoDescription1 { get; set; }
+
+        [Name("additionalInfoTitle2")]
+        public string AdditionalInfoTitle2 { get; set; }
+
+        [Name("additionalInfoDescription2")]
+        public string AdditionalInfoDescription2 { get; set; }
     }
 }
